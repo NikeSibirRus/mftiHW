@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+{% load static %}
+{% load bootstrap5 %}
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<title>TopNews</title>
+<meta http-equiv="Content-Type" content="text/html;"  charset="utf-8"/>
+<link rel="stylesheet" href="{% static 'home01/css/style.css'%}" type="text/css">
+<link rel="stylesheet" href="{% static 'home01/css/slyder.css' %}" type="text/css">
+<script src="https://kit.fontawesome.com/a97047fead.js" crossorigin="anonymous"></script>
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+</head>
+<body>
+<div id="page_wrapper">
+
+    <div class="container-fluid col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        {% block header %}{% include 'home01/header.html' %} {% endblock %}
+    </div>
+
+
+    <div class="container-fluid">
+      <div class="row">
+
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            {% block left_side %}{% include 'home01/left_sidebar.html' %} {% endblock %}
+        </div>
+
+        <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+            {% block body %}{% include 'home01/body.html' %} {% endblock %}
+        </div>
+
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            {% block right_side %}{% include 'home01/right_side.html' %} {% endblock %}
+        </div>
+       </div>
+
+ {% block foot %}{% include 'home01/footer.html' %} {% endblock %}
+
+    </div>
+
+
+</div>
+</body>
+</html>
