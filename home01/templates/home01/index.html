@@ -15,8 +15,12 @@
 <body>
 <div id="page_wrapper">
 
-    <div class="container-fluid col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        {% block header %}{% include 'home01/header.html' %} {% endblock %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+             {% block header %}{% include 'home01/header.html' %} {% endblock %}
+            </div>
+        </div>
     </div>
 
 
@@ -35,11 +39,16 @@
             {% block right_side %}{% include 'home01/right_side.html' %} {% endblock %}
         </div>
        </div>
+        </div>
 
- {% block foot %}{% include 'home01/footer.html' %} {% endblock %}
 
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                {% block foot %}{% include 'home01/footer.html' %} {% endblock %}
+            </div>
+        </div>
     </div>
-
 
 </div>
 </body>
