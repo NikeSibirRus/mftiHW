@@ -18,7 +18,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-             {% block header %}{% include 'home01/header.html' %} {% endblock %}
+             {% include 'home01/header.html' %}
             </div>
         </div>
     </div>
@@ -27,16 +27,14 @@
     <div class="container-fluid">
       <div class="row">
 
-        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-            {% block left_side %}{% include 'home01/left_sidebar.html' %} {% endblock %}
+        <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+            {% include 'home01/left_sidebar.html' %}
         </div>
-
-        <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
-            {% block body %}{% include 'home01/body.html' %} {% endblock %}
+        <div class="col-xs-5 col-sm-5 col-md-7 col-lg-7">
+            {% include 'home01/body.html' %}
         </div>
-
         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-            {% block right_side %}{% include 'home01/right_side.html' %} {% endblock %}
+            {% include 'home01/right_side.html' %}
         </div>
        </div>
         </div>
@@ -45,7 +43,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                {% block foot %}{% include 'home01/footer.html' %} {% endblock %}
+                {% include 'home01/footer.html' %}
             </div>
         </div>
     </div>

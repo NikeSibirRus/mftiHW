@@ -157,6 +157,16 @@ A:hover {
   color: #2153AA;
 }
 
+#content h5 {
+  margin-top:0px;margin-bottom:0px;
+  font-family: verdana, arial, sans-serif;
+  font-size: 6px;
+  font-weight: bold;
+  line-height: 12px;
+  color: #2153AA;
+  text-align: right;
+}
+
 #navlist
 {
   margin-top:1px;
