@@ -27,5 +27,23 @@ def contacts(request):
 def addnews(request):
     return render(request, 'home01/addnews.html')
 
+def login(request):
+    if request.method == 'POST':
+        print('Получили post-Запрос!')
+        print(request.POST)
+        print(request.POST.get('username'))
+        print(request.POST.get('password'))
+    else:
+        print('Получили get-Запрос!')
+
+
+
+
+
+    return render(request, 'home01/login.html')
+
+def cr_account(request):
+    return render(request, 'home01/cr_account.html')
+
 def err404(request, exception):
     return render(request, 'home01/404.html')

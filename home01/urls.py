@@ -23,6 +23,10 @@ urlpatterns = [
     path('aboutus/', views.aboutus),
     path('contacts/', views.contacts),
     path('addnews/', views.addnews),
+    path('login/', views.login),
+    path('cr_account/', views.cr_account),
+
+
 
     path('notfound/', views.err404, name='err404'),
 ]
