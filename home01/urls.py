@@ -24,6 +24,9 @@ urlpatterns = [
     path('contacts/', views.contacts),
     path('addnews/', views.addnews),
     path('login/', views.login),
+    path('all_news/', views.all_news),
+
+
     path('cr_account/', views.cr_account),
 
 
