@@ -1,9 +1,56 @@
+<!--скрипты ниже для работы выпадающего меню пользователя-->
+{% load bootstrap5 %}
+{% load static %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+<link rel="stylesheet" href="{% static 'home01/css/style.css'%}" type="text/css">
+<link rel="stylesheet" href="{% static 'home01/css/slyder.css' %}" type="text/css">
+
+
 <!-- Leftside bar -->
             <div id="tm-sidebar" class="tm-sidebar">
                 <nav class="tm-nav">
                     <div>
                         <div class="tm-brand-box">
                             <h1 class="tm-brand">Меню</h1>
+                        </div>
+
+                          <div class="dropdown">
+                          <button class="dropbtn">Управление</button>
+                          <div class="dropdown-content">
+                               <ul id="tm-main-nav">
+                                    <li class="nav-item">
+                                        <a href="/login" class="nav-link">
+                                        <div class="triangle-right"></div>
+                                        <i class="fas fa-right-to-bracket nav-icon"></i>
+                                         Войти в аккаунт
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="/cr_account" class="nav-link">
+                                        <div class="triangle-right"></div>
+                                         <i class="fas fa-registered nav-icon"></i>
+                                        Регистрация
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="/addnews" class="nav-link">
+                                        <div class="triangle-right"></div>
+                                         <i class="fas fa-newspaper nav-icon"></i>
+                                        Добавить новость
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="/admin" class="nav-link external" target="_parent" rel="sponsored">
+                                            <div class="triangle-right"></div>
+                                            <i class="fas fa-user nav-icon"></i>
+                                            Admin
+                                        </a>
+                                    </li>
+                                </ul>
+
+                          </div>
                         </div>
 
                         <ul id="tm-main-nav">
@@ -35,43 +82,16 @@
                                     News page
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a href="/admin" class="nav-link external" target="_parent" rel="sponsored">
-                                    <div class="triangle-right"></div>
-                                    <i class="fas fa-user nav-icon"></i>
-                                    Admin
-                                </a>
-                            </li>
+
                         </ul>
                     </div>
 
                     <footer>
                         <div>
-                                <ul id="tm-main-nav">
-                                    <li class="nav-item">
-                                        <a href="/login" class="nav-link">
-                                        <div class="triangle-right"></div>
-                                        <i class="fas fa-right-to-bracket nav-icon"></i>
-                                         Войти в аккаунт
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="/cr_account" class="nav-link">
-                                        <div class="triangle-right"></div>
-                                         <i class="fas fa-registered nav-icon"></i>
-                                        Регистрация
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="/addnews" class="nav-link">
-                                        <div class="triangle-right"></div>
-                                         <i class="fas fa-newspaper nav-icon"></i>
-                                        Добавить новость
-                                        </a>
-                                    </li>
-
-                                </ul>
+                            <br>
                         </div>
                     </footer>
                 </nav>
             </div>
+
+
