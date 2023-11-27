@@ -33,7 +33,7 @@
     <br>
     </div>
       <div id="footer" >
-        <a href="/">Главная страница(Home)</a>
+        <a href="{% url 'home' %}" {% if request.path == '/' %} class ="link-active" aria-current="page" {% endif %}>Главная страница(Home)</a>
       </div>
 </div>
 </body>

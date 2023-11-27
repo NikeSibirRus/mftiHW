@@ -51,31 +51,33 @@
 
                         <ul id="tm-main-nav">
                             <li class="nav-item">
-                                <a href="/" class="nav-link current">
+                                <a href="{% url 'home' %}"
+  {% if request.resolver_match.view_name == 'home' %} class="nav-link current"{% else %}class="nav-link" {% endif %}>
                                     <div class="triangle-right"></div>
                                     <i class="fas fa-home nav-icon"></i>
-                                    Home
+                                    Главная
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="/aboutus" class="nav-link">
+                                <a href="{% url 'about' %}" class="nav-link">
                                     <div class="triangle-right"></div>
                                     <i class="fas fa-images nav-icon"></i>
-                                    AboutUs
+                                    О нас
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="/contacts" class="nav-link">
+                                <a href="{% url 'contact' %}" class="nav-link">
                                     <div class="triangle-right"></div>
                                     <i class="fas fa-address-book nav-icon"></i>
-                                    Contacts
+                                    Контакты
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="/all_news" class="nav-link">
+                                <a href="{% url 'all_news' %}"
+   {% if request.resolver_match.view_name == 'all_news' %} class="nav-link current" {% else %} class="nav-link" {% endif %}>
                                     <div class="triangle-right"></div>
                                     <i class="fas fa-pen-to-square nav-icon"></i>
-                                    News
+                                    Все новости
                                 </a>
                             </li>
 

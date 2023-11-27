@@ -19,13 +19,11 @@ from django.urls import  path
 from . import views
 
 urlpatterns = [
-    path('', views.index, name='home'),
-    path('aboutus/', views.aboutus, name='about'),
-    path('contacts/', views.contacts, name='contact'),
-    path('addnews/', views.addnews),
-    path('login/', views.login),
+    path('all_news/', views.all_news, name='all_news'),
+    path('show/', views.index, name='news_index'),
+    path('show/<int:id>/', views.news_detail, name='news_detail'),
+    path('news_add/', views.news_add, name='news_add'),
 
 
-    path('cr_account/', views.cr_account),
-    path('notfound/', views.err404, name='err404'),
+
 ]

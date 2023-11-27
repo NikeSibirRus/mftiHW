@@ -21,8 +21,7 @@ def index(request):
 def aboutus(request):
     return render(request, 'home01/aboutus.html')
 
-def all_news(request):
-    return render(request, 'home01/all_news.html')
+
 
 def contacts(request):
     return render(request, 'home01/contacts.html')

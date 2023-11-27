@@ -35,7 +35,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'home01',
+    'news',
+    'users',
     'bootstrap5',
+    'debug_toolbar',
 
 ]
 
@@ -47,7 +50,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
+INTERNAL_IPS = ['127.0.0.1',]
 
 ROOT_URLCONF = 'mftiHW.urls'
 
@@ -115,6 +120,11 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
+import os
+
+MEDIA_URL = 'media/'
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+#print(MEDIA_ROOT)
 
 STATIC_URL = 'static/'
 
