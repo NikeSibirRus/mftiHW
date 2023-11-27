@@ -263,3 +263,40 @@ A:hover {
   background: #0000FF;
 }
 
+.tm-sidebar {
+	background-color: #fff;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 1000;
+	padding-left: 40px;
+	padding-top: 40px;
+	width: 100%;
+}
+
+.tm-nav {
+	display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+.nav-link {
+	position: relative;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+.nav-item:hover .nav-link,
+.nav-link.current {
+	color: #006699;
+	padding-left: 30px;
+}
+
+/* Кнопка выпадающего списка */
+.dropbtn {
+	background: #4E7DD1 url('../img/menu_bg.gif') bottom left repeat-x;
+	width: 100%;
+    display: block;
+    align-items: center;
+	justify-content: center;
+	margin-bottom: 1px;
+}

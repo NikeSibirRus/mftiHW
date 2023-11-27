@@ -4,7 +4,10 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
 <head>
+{% block title %}
 <title>TopNews</title>
+{% endblock %}
+
 <meta http-equiv="Content-Type" content="text/html;"  charset="utf-8"/>
 <link rel="stylesheet" href="{% static 'home01/css/style.css'%}" type="text/css">
 
@@ -35,7 +38,6 @@
             {% include 'home01/body.html' %}
             {% endblock %}
         </div>
-
         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
             {% include 'home01/right_side.html' %}
         </div>
