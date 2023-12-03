@@ -8,6 +8,7 @@
                     <h3>{{ article.title }}</h3>
                     <div class='featurebox_side'>{{ article.anouncement }}</div>
                     <p>{{ article.text }}</p>
+                    <p>{{ article.author.first_name }} ( {{ article.author.last_name }} )</p>
                     <h4 align="right">{{ article.date|date:"d.m.Y" }}</h4>
             </div>
 {% endblock %}

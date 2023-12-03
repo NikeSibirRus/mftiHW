@@ -16,7 +16,7 @@
                     <div>
                      <ul  class="nav nav-pills flex-column mb-auto">
                             <li class="nav-item">
-                                <a href="{% url 'home' %}"
+                                <a href="{% url 'news_index' %}"
                                 {% if request.resolver_match.view_name == 'home' %} class="nav-link current link-active"{% else %} class="nav-link" {% endif %}>
                                     <i class="fa fa-house menu-icon"></i>
                                     <div class="d-none d-lg-block">Главная</div>
@@ -43,19 +43,23 @@
                                     <div class="d-none d-lg-block">Все новости</div>
                                 </a>
                             </li>
+
+
                         </ul>
+                    <div class="row">
+                    </div>
 
                      <div class="dropdown" >
                           <button class="dropbtn btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                              <div class="d-none d-lg-block">Администратор</div>
+                              <div class="d-none d-lg-block">Пользователь: {{request.user.username}}</div>
                           </button>
                       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li><a class="dropdown-item" href="/login">Войти в аккаунт</a></li>
-                        <li><a class="dropdown-item" href="/cr_account">Регистрация</a></li>
-                        <li><a class="dropdown-item" href="/addnews">Добавить новость</a></li>
+                        <li><a class="dropdown-item" href="{% url 'login' %}">Войти в аккаунт</a></li>
+                        <li><a class="dropdown-item" href="{% url 'register' %}">Регистрация</a></li>
+                        <li><a class="dropdown-item" href="{% url 'create_article' %}">Добавить новость</a></li>
                         <li><a class="dropdown-item" href="/admin">Admin</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#"> Выход</a></li>
+                        <li><a class="dropdown-item" href="{% url 'logout' %}"> Выход</a></li>
                       </ul>
 
                         </div>

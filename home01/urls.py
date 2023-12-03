@@ -22,10 +22,5 @@ urlpatterns = [
     path('', views.index, name='home'),
     path('aboutus/', views.aboutus, name='about'),
     path('contacts/', views.contacts, name='contact'),
-    path('addnews/', views.addnews),
-    path('login/', views.login),
-
-
-    path('cr_account/', views.cr_account),
     path('notfound/', views.err404, name='err404'),
 ]

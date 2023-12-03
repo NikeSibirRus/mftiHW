@@ -1,0 +1,13 @@
+{% extends 'home01/index.html' %}
+{% load static %}
+{% load bootstrap5 %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <h4>Вы вышли из своей учетной записи</h4>
+    <div class="border-top pt-3">
+        <small class="text-muted">
+            <a href="{% url 'login' %}">Войти</a>
+        </small>
+    </div>
+{% endblock %}
