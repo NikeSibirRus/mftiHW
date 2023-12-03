@@ -1,0 +1,21 @@
+{% extends 'home01/index.html' %}
+{% load static %}
+{% load bootstrap5 %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+    <div class="row">
+    <br>
+    <div class="text-center" style="...">
+        <h1>Страница обратной связи</h1>
+    </div>
+        <form method="post" class="contact_form">
+            {% csrf_token %}
+            {{ form|crispy }}
+
+
+            <input type="submit" class="btn btn-success" value="Отправить">
+        </form>
+    </div>
+{% endblock %}

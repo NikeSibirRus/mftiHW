@@ -6,6 +6,13 @@ body {
   background-color: #E0E0E0;
 }
 
+.contact_form{
+  float: left;
+  margin: 10px 20%;
+  width: 50%;
+
+}
+
 A:link {
 	COLOR: #0000FF; text-decoration: none;
 }

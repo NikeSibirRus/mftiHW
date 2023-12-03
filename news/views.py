@@ -11,7 +11,7 @@ def all_news(request):
     return render(request, 'news/all_news.html', context)
 
 def index(request):
-    article = Article.objects.all().first()
+    article = Article.objects.all().last()
     context = {'article':article}
     return render(request,'news/index.html',context)
 
