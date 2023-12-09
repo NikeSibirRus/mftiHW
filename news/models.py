@@ -42,6 +42,15 @@ class Article(models.Model):
         for t in self.tags.all():
             s = t.title
         return s
+
+    def image_tag(self):
+        image = Image.objects.filter(article=self)
+        print('!!!!',image)
+        if image:
+            return mark_safe(f'<img src="{image[0].image.url}" height="50px" width="auto" />')
+        else:
+            return '(no image)'
+
     #Методанные
     class Meta:
         ordering = ['title', 'date']
