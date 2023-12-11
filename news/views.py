@@ -9,6 +9,21 @@ from .forms import *
 # Create your views here.
 
 
+import json
+#URL:    path('search_auto/', views.search_auto, name='search_auto'),
+def search_auto(request):
+    if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+        q = request.GET.get('term','')
+        articles = Article.objects.filter(title__icontains=q)
+        results =[]
+        for a in articles:
+            results.append(a.title)
+        data = json.dumps(results)
+    else:
+        data = 'fail'
+    mimetype = 'application/json'
+    return HttpResponse(data, mimetype)
+
 def all_news(request):
     categories = Article.categories  # создали перечень категорий
     author_list = User.objects.all()  # создали перечень авторов

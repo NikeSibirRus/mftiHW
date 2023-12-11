@@ -46,23 +46,24 @@
 
 
                         </ul>
-                    <div class="row">
-                    </div>
 
-                     <div class="dropdown" >
-                          <button class="dropbtn btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                              <div class="d-none d-lg-block">Пользователь: {{request.user.username}}</div>
-                          </button>
-                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li><a class="dropdown-item" href="{% url 'login' %}">Войти в аккаунт</a></li>
-                        <li><a class="dropdown-item" href="{% url 'register' %}">Регистрация</a></li>
-                        <li><a class="dropdown-item" href="{% url 'create_article' %}">Добавить новость</a></li>
-                        <li><a class="dropdown-item" href="/admin">Admin</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="{% url 'logout' %}"> Выход</a></li>
-                      </ul>
 
-                        </div>
+     <div class="dropdown" >
+          <button class="dropbtn btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              <div class="d-none d-lg-block">Пользователь: {{request.user.username}}</div>
+          </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="{% url 'login' %}">Войти в аккаунт</a></li>
+                <li><a class="dropdown-item" href="{% url 'register' %}">Регистрация</a></li>
+                <li><a class="dropdown-item" href="{% url 'create_article' %}">Добавить новость</a></li>
+                <li><a class="dropdown-item" href="/admin">Admin</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="{% url 'logout' %}"> Выход</a></li>
+              </ul>
+
+        </div>
+
+
                     </div>
                 </nav>
             </div>

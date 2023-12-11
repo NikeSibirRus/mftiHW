@@ -20,6 +20,7 @@ from . import views
 
 urlpatterns = [
     path('all_news/', views.all_news, name='all_news'),
+    path('all_news/search_auto/', views.search_auto, name='search_auto'),
     path('show/', views.index, name='news_index'),
     path('show/<int:id>/', views.news_detail, name='news_detail'),
     path('create/', views.add_article, name='create_article'),
