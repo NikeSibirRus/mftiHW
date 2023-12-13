@@ -168,7 +168,7 @@ body {
 
 .featurebox_side {
   background-color: #fffff6;
-  margin:0px;margin-left:10px;margin-right:10px;margin-bottom:15px;
+  margin:1px;margin-left:10px;margin-right:10px;margin-bottom:15px;
   padding:10px;
   border: 1px solid #DFE8F7;
   font-family: verdana, arial, sans-serif;
@@ -187,8 +187,6 @@ body {
   padding: 15px;
   color: #1a1a1a;
   font-size: 14px;
-  -webkit-transition: all 0.3 ease;
-  transition: all 0.3 ease;
   cursor: pointer;
 }
 .form button:hover,.form button:active,.form button:focus {

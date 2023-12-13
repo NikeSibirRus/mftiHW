@@ -28,15 +28,26 @@ def all_news(request):
     categories = Article.categories  # создали перечень категорий
     author_list = User.objects.all()  # создали перечень авторов
 
+    print('Ответ',request.POST)
+
     if request.method == "POST":
+
+
         selected_author = int(request.POST.get('author_filter'))
         selected_category = int(request.POST.get('category_filter'))
+        search_article = (request.POST.get('search_input'))
+        print('search_article', search_article)
+        print('search_article_len',len(search_article))
         if selected_author == 0:  # выбраны все авторы
             articles = Article.objects.all()
         else:
             articles = Article.objects.filter(author=selected_author)
         if selected_category != 0:  # фильтруем найденные по авторам результаты по категориям
             articles = articles.filter(category__icontains=categories[selected_category - 1][0])
+        if len(search_article) !=0: # применяем фильтр по новости
+            articles = articles.filter(title=search_article)
+
+
     else:  # если страница открывется впервые
         selected_author = 0
         selected_category = 0
