@@ -79,16 +79,32 @@
 
     </div>
 
+  <br>
+  <br>
+
    <div class="container-fluid">
        <div class="row">
            {% for articl in articles %}
                <div id="news" class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+
+               {% if articl.image_set.all %}
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                        <img src="{{ articl.image_set.all.0.image.url }}"
+                             style="width:50%; height:auto; border-radius:5px;">
+                    </div>
+               {% endif %}
+
                <h3>{{ articl.title }}</h3>
                    <div class='featurebox_side'>{{ articl.anouncement }}</div>
                    <p>{{ articl.text|slice:":100" }}...</p>
                    <p class="lead mb-0"><a href="{{ articl.get_absolute_url }}" class="fw-bold">Подробности...</a></p>
                 <h4 align="right">{{ articl.date|date:"d.m.Y" }}</h4>
+
+
+
                </div>
+
+
            {% endfor %}
       </div>
    </div>
