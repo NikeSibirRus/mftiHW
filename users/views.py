@@ -1,6 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib import messages
+from django.contrib.auth.models import Group
 
 from users.models import Account
 from .forms import  *
@@ -47,7 +48,13 @@ def register(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
         if form.is_valid():
-            form.save()
+            user = form.save()
+            # Добавляем группу
+            group = Group.objects.get(name='Autors')
+            user.groups.add(group)
+
+
+
             username = form.cleaned_data.get('username')
             messages.success(request, f'Ваш аккаунт создан  {username}: можно войти на сайт.')
             return redirect('login')
