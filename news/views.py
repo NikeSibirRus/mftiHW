@@ -28,11 +28,7 @@ def all_news(request):
     categories = Article.categories  # создали перечень категорий
     author_list = User.objects.all()  # создали перечень авторов
 
-    print('Ответ',request.POST)
-
     if request.method == "POST":
-
-
         selected_author = int(request.POST.get('author_filter'))
         selected_category = int(request.POST.get('category_filter'))
         search_article = (request.POST.get('search_input'))
@@ -46,8 +42,6 @@ def all_news(request):
             articles = articles.filter(category__icontains=categories[selected_category - 1][0])
         if len(search_article) !=0: # применяем фильтр по новости
             articles = articles.filter(title=search_article)
-
-
     else:  # если страница открывется впервые
         selected_author = 0
         selected_category = 0
@@ -89,3 +83,10 @@ def add_article(request):
     else:
         form = ArticleForm()
     return render(request, 'news/add_article.html', {'form': form})
+
+
+class ArticleDeleteView(DeleteView):
+    model = Article
+    success_url = reverse_lazy('news_index') #именованная ссылка или абсолютную
+    template_name = 'news/delete_article.html'
+

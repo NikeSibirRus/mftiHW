@@ -24,6 +24,7 @@ urlpatterns = [
     path('show/', views.index, name='news_index'),
     path('show/<int:id>/', views.news_detail, name='news_detail'),
     path('create/', views.add_article, name='create_article'),
+    path('delete/<int:pk>', views.ArticleDeleteView.as_view(), name='news_delete'),
 
 
 
