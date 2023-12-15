@@ -3,13 +3,15 @@
 {% load bootstrap5 %}
 {% load crispy_forms_tags %}
 
+{% block title %}Мой профиль{% endblock %}
+
 {% block content %}
     <div class="row">
      <div class="text-center" style="margin-top:30px;">
         <h2>Профиль пользователя {{ request.user.username }}</h2>
         <br>
         <div class="row gutters-sm">
-                        <div class="col-md-4 mb-3">
+         <div class="col-md-4 mb-3">
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex flex-column align-items-center text-center">
@@ -21,6 +23,39 @@
                             </div>
                         </div>
                     </div>
+                </div>
+
+                         <div class="card mt-3">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                            <h6 class="mb-0">
+                                <img src="{% static 'home01/img/vk.png' %}" style="height:24px; width:auto;">
+                                VK
+                            </h6>
+                            <span class="text-secondary">{{ request.user.account.vk }}</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                            <h6 class="mb-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                     stroke-linejoin="round"
+                                     class="feather feather-instagram mr-2 icon-inline text-danger">
+                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                                </svg>
+                                Instagram
+                            </h6>
+                            <span class="text-secondary">{{ request.user.account.instagram }}</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                            <h6 class="mb-0">
+                                <img src="{% static 'home01/img/telegram.png' %}" style="height:24px; width:auto;">
+                                Telegram
+                            </h6>
+                            <span class="text-secondary">{{ request.user.account.telegram }}</span>
+                        </li>
+                    </ul>
                 </div>
 
 
@@ -60,6 +95,10 @@
                         </div>
                     </div>
                     <hr>
+                   <div class="text-center">
+                        <a class="btn btn-outline-primary" style="margin-bottom:15px;"
+                           href="{% url 'profile_update' %}">Edit</a>
+                    </div>
 
                 </div>
             </div>
