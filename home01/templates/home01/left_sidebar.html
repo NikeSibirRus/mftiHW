@@ -3,6 +3,7 @@
 {% load static %}
 {% bootstrap_css %}
 {% bootstrap_javascript %}
+{% load users_extras %}
 
 <script src="https://kit.fontawesome.com/a97047fead.js" crossorigin="anonymous"></script>
 <!--скрипты ниже для работы выпадающего меню пользователя-->
@@ -53,12 +54,30 @@
               <div class="d-none d-lg-block">Пользователь: {{request.user.username}}</div>
           </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li><a class="dropdown-item" href="{% url 'login' %}">Войти в аккаунт</a></li>
-                <li><a class="dropdown-item" href="{% url 'register' %}">Регистрация</a></li>
+                  {% if request.user.id %}  <!-- проверяем аутентификацию-->
+                    {% if request.user|has_group:"Autors" %}
+                       <li><a class="dropdown-item" href="{% url 'create_article' %}">Добавить новость</a></li>
+                    {% endif %}
                 <li><a class="dropdown-item" href="{% url 'profile' %}">Мой профиль</a></li>
                 <li><a class="dropdown-item" href="{% url 'logout' %}"> Выход</a></li>
-                <li><a class="dropdown-item" href="{% url 'create_article' %}">Добавить новость</a></li>
                 <li><a class="dropdown-item" href="/admin">Admin</a></li>
+                  {% else %} <!-- ссылки на регистрацию и аутентификацию-->
+                 <li><a class="dropdown-item" href="{% url 'login' %}">Войти в аккаунт</a></li>
+                 <li><a class="dropdown-item" href="{% url 'register' %}">Регистрация</a></li>
+
+                  {% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
                 <li><hr class="dropdown-divider"></li>
 
               </ul>

@@ -22,7 +22,9 @@ urlpatterns = [
     path('all_news/', views.all_news, name='all_news'),
     path('all_news/search_auto/', views.search_auto, name='search_auto'),
     path('show/', views.index, name='news_index'),
-    path('show/<int:id>/', views.news_detail, name='news_detail'),
+    #path('show/<int:id>/', views.news_detail, name='news_detail'),
+    path('show/<int:pk>', views.ArticleDetailView.as_view(), name='news_detail'),
+    path('update/<int:pk>', views.ArticleUpdateView.as_view(), name='news_update'),
     path('create/', views.add_article, name='create_article'),
     path('delete/<int:pk>', views.ArticleDeleteView.as_view(), name='news_delete'),
 

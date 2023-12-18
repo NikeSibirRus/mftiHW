@@ -2,6 +2,7 @@
 {% load static %}
 {% load bootstrap5 %}
 {% bootstrap_javascript %}
+{% load users_extras %}
 
 {% block title %}Супер новость!{% endblock %}
 
@@ -57,6 +58,11 @@
                     <br><br>
                     <p>Автор: {{ article.author.first_name }} ( {{ article.author.last_name }} )</p>
                     <h4 align="right">{{ article.date|date:"d.m.Y" }}</h4>
-                    <a class="btn btn-warning" href="{% url 'news_delete' article.pk %}">Удалить</a>
+
+                    {% if request.user|has_group:"Autors" %}
+                       <a class="btn btn-warning" href="{% url 'news_delete' article.pk %}">Удалить</a>
+                    {% endif %}
+
+
             </div>
 {% endblock %}

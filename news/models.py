@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils.safestring import mark_safe
 
-
+from django.db.models import Count
 
 
 # Create your models here.
@@ -11,6 +11,13 @@ class Tag(models.Model):
     status = models.BooleanField(default=True)
     def __str__(self):
         return self.title
+    def tag_count(self):
+        count = self.article_set.count()
+        #комментарий: когда мы работаем со связанными объектами (foreign_key, m2m, один к одному),
+        #мы можем обращаться к связанным таблицам при помощи синтаксиса:
+        #связаннаяМодель_set и что-то делать с результатами. В этом примере - мы используем связанные article
+        #и вызываем метод count
+        return count
     class Meta:
         ordering = ['title','status']
         verbose_name = 'Тэг'
@@ -69,3 +76,17 @@ class Image(models.Model):
             return mark_safe(f'<img src="{self.image.url}" height="50px" width="auto" />')
         else:
             return '(no image)'
+
+
+class ViewCount(models.Model):
+    article = models.ForeignKey(Article,on_delete=models.CASCADE,
+                                related_name='views')
+    ip_address = models.GenericIPAddressField()
+    view_date = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering=('-view_date',)
+        indexes = [models.Index(fields=['-view_date'])]
+
+    def __str__(self):
+        return self.article.title

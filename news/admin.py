@@ -35,24 +35,36 @@ class ArticleAdmin(admin.ModelAdmin):
 admin.site.register(Article, ArticleAdmin)
 
 
+@admin.register(Tag)
 class TagAdmin(admin.ModelAdmin):
     list_display = ['title', 'status','tag_count']
     list_filter = ['title', 'status']
+    actions = ['set_true']
 
-    @admin.display(description='Использований:', ordering='tag_count')
-    def tag_count(self, object):
-        return object.tag_count
+    # @admin.display(description='Использований:', ordering='tag_count')
+    # def tag_count(self, object):
+    #     return object.tag_count
+    #
+    # def get_queryset(self, request):
+    #     queryset = super().get_queryset(request)
+    #     queryset = queryset.annotate(tag_count=Count('article'))
+    #     return queryset
 
-    def get_queryset(self, request):
-        queryset = super().get_queryset(request)
-        queryset = queryset.annotate(tag_count=Count('article'))
-        return queryset
+    @admin.action(description='Активировать выбранные теги')
+    def set_true(self,request,queryset):
+        amount = queryset.update(status=True)
+        self.message_user(request,f'Активировано {amount} тегов')
 
 
-admin.site.register(Tag, TagAdmin)
+#admin.site.register(Tag, TagAdmin)
+
 
 @admin.register(Image)
 class ImageAdmin(admin.ModelAdmin):
     list_display = ['name','article','image_tag']
+
+@admin.register(ViewCount)
+class ViewCountAdmin(admin.ModelAdmin):
+    list_display = ['article','ip_address','view_date']
 
 

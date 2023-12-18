@@ -50,12 +50,16 @@ def register(request):
         if form.is_valid():
             user = form.save()
             # Добавляем группу
-            group = Group.objects.get(name='Autors')
-            user.groups.add(group)
-
-
-
+            category = request.POST['account_type']
+            if category == 'Autors':
+                group = Group.objects.get(name='Actions Required')
+                user.groups.add(group)
+            else:
+                group = Group.objects.get(name='Reader')
+                user.groups.add(group)
             username = form.cleaned_data.get('username')
+            Account.objects.create(user=user, nickname=user.username)
+
             messages.success(request, f'Ваш аккаунт создан  {username}: можно войти на сайт.')
             return redirect('login')
     else:
@@ -81,6 +85,7 @@ def password_update(request):
 
     context = {"form": form}
     return render(request,'users/edit_password.html',context)
+
 
 def profile_update(request):
     user = request.user
