@@ -1,10 +1,9 @@
 {% extends 'home01/index.html' %}
 {% load static %}
 {% load bootstrap5 %}
-{% block title %}Избранное{% endblock %}
+{% block title %}Мои новости{% endblock %}
 {% block content %}
  <div id="content" >
-
 <div class="container-fluid">
        <div class="row">
            {% for articl in articles %}
@@ -20,18 +19,16 @@
                    <p>{{ articl.text|slice:":100" }}...</p>
                    <p class="lead mb-0"><a href="{{ articl.get_absolute_url }}" class="fw-bold">Подробности...</a></p>
                 <h4 align="right">{{articl.date|date:"d.m.Y" }}</h4>
-               <a class="btn btn-warning" href="{% url 'favorites' articl.pk %}"><i class="fa fa-heart">Удалить из избранного</i></a>
            </div>
            {% endfor %}
       </div>
    </div>
-
- <div class="container-fluid">
- <div class="row">
- {% if articles|length == 0 %}
-     <h3> Нет статей в избранном </h3>
+  <div class="container-fluid">
+     <div class="row">
+     {% if articles|length == 0 %}
+     <h3> Увы, пока нет статей! Удачи! </h3>
  {% else %}
-        <nav aria-label="Page navigation example">
+    <nav aria-label="Page navigation example">
           <ul class="pagination">
               {% if articles.has_previous %}
                 <li class="page-item"><a class="page-link" href="?page={{ articles.previous_page_number }}">Previous</a></li>
@@ -48,9 +45,8 @@
               {% endif %}
           </ul>
         </nav>
-
  {% endif %}
-        </div>
+    </div>
     </div>
   </div>
 {% endblock %}

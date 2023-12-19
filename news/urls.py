@@ -22,6 +22,7 @@ urlpatterns = [
     path('all_news/', views.all_news, name='all_news'),
     path('all_news/search_auto/', views.search_auto, name='search_auto'),
     path('show/', views.index, name='news_index'),
+    path('mynews/', views.mynews, name='mynews'),
     #path('show/<int:id>/', views.news_detail, name='news_detail'),
     path('show/<int:pk>', views.ArticleDetailView.as_view(), name='news_detail'),
     path('update/<int:pk>', views.ArticleUpdateView.as_view(), name='news_update'),
@@ -29,6 +30,8 @@ urlpatterns = [
     path('create/', views.add_article, name='create_article'),
     path('pagination', views.pagination, name='pagination'),
     path('myarticles', views.myarticles, name='myarticles'),
+
+
 
 
 

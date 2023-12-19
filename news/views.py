@@ -44,8 +44,8 @@ def all_news(request):
         selected_author = int(request.POST.get('author_filter'))
         selected_category = int(request.POST.get('category_filter'))
         search_article = (request.POST.get('search_input'))
-        print('search_article', search_article)
-        print('search_article_len',len(search_article))
+       # print('search_article', search_article)
+      #  print('search_article_len',len(search_article))
         if selected_author == 0:  # выбраны все авторы
             articles = Article.objects.all()
         else:
@@ -64,14 +64,31 @@ def all_news(request):
 
     return render(request, 'news/all_news.html', context)
 
+from django.core.paginator import Paginator
+def mynews(request):
+    user = request.user
+    articles = Article.objects.filter(author=user)
+    p = Paginator(articles, 2)
+    page_number = request.GET.get('page')
+    page_obj = p.get_page(page_number)
+    context = {'articles': page_obj}
+    return render(request, 'news/mynews.html', context)
 
+from django.core.paginator import Paginator
 def myarticles(request):
     user = request.user
-    print('Я есть',user)
     articles = Article.objects.filter(favoritearticle__user=user)
-
-    context = {'articles': articles}
+    p = Paginator(articles, 2)
+    page_number = request.GET.get('page')
+    page_obj = p.get_page(page_number)
+    context = {'articles': page_obj}
     return render(request, 'news/myarticles.html', context)
+
+
+
+
+
+
 
 def index(request):
    # article = Article.objects.last()

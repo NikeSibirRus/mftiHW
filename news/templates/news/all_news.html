@@ -26,12 +26,6 @@
     var selectedObj = ui.item;
   }
 </script>
-
-
-
-
-
-
   <div id="content" >
     <div class="content_center" align="left">
 
@@ -80,36 +74,8 @@
     </div>
 
     </div>
-
   <br>
   <br>
-
-    {% if total > -1 %}
-    <div class="row">
-        <nav aria-label="Page navigation example">
-          <ul class="pagination">
-              {% if articles.has_previous %}
-                <li class="page-item"><a class="page-link" href="?page={{ articles.previous_page_number }}">Previous</a></li>
-              {% endif %}
-              {% for p in articles.paginator.page_range %}
-                {% if articles.number == p %}
-                    <li class="page-item"><p class="page-link" style="color:black;"> {{ p }}</p></li>
-                {% else %}
-                    <li class="page-item"><a class="page-link" href="?page={{ p }}"> {{ p }}</a></li>
-                {% endif %}
-              {% endfor %}
-              {% if articles.has_next %}
-                <li class="page-item"><a class="page-link" href="?page={{ articles.next_page_number }}">Next</a></li>
-              {% endif %}
-          </ul>
-        </nav>
-    </div>
-    {% endif %}
-
-
-
-
-
    <div class="container-fluid">
        <div class="row">
            {% for articl in articles %}
@@ -121,7 +87,6 @@
                              style="width:50%; height:auto; border-radius:5px;">
                     </div>
                {% endif %}
-
                <h3>{{ articl.title }}</h3>
                    <div class='featurebox_side'>{{ articl.anouncement }}</div>
                    <p>{{ articl.text|slice:":100" }}...</p>
@@ -129,9 +94,6 @@
                 <h4 align="right">{{ articl.date|date:"d.m.Y" }}</h4>
                <p><small> Просмотры: {{ articl.get_views }}</small></p>
                <a class="btn btn-warning" href="{% url 'favorites' articl.pk %}"><i class="fa fa-heart"></i></a>
-
-
-
            </div>
            {% endfor %}
       </div>
