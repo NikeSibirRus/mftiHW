@@ -1,9 +1,5 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.urls import reverse_lazy
-
-from .models import *
-from users.models import *
-from django.db import connection, reset_queries
 from django.views.generic import DetailView, DeleteView, UpdateView
 from django.contrib.auth.decorators import login_required
 from .forms import *
@@ -11,7 +7,7 @@ from .forms import *
 
 
 
-from django.core.paginator import Paginator
+
 def pagination(request):
     articles = Article.objects.all()
     p = Paginator(articles, 4)
@@ -84,12 +80,6 @@ def myarticles(request):
     context = {'articles': page_obj}
     return render(request, 'news/myarticles.html', context)
 
-
-
-
-
-
-
 def index(request):
    # article = Article.objects.last()
     article = Article.objects.latest("id")
@@ -106,8 +96,9 @@ def news_detail(request, id):
 
 
 from django.conf import settings
+from users.utils import check_group
 @login_required(login_url="/")
-
+@check_group('Autors')
 def add_article(request):
     if request.method == 'POST':
         form = ArticleForm(request.POST,request.FILES)
