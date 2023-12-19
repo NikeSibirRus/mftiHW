@@ -93,7 +93,9 @@
                    <p class="lead mb-0"><a href="{{ articl.get_absolute_url }}" class="fw-bold">Подробности...</a></p>
                 <h4 align="right">{{ articl.date|date:"d.m.Y" }}</h4>
                <p><small> Просмотры: {{ articl.get_views }}</small></p>
+               {% if request.user.id %}
                <a class="btn btn-warning" href="{% url 'favorites' articl.pk %}"><i class="fa fa-heart"></i></a>
+               {% endif %}
            </div>
            {% endfor %}
       </div>

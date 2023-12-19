@@ -41,6 +41,7 @@
                                     <div class="d-none d-lg-block">Все новости</div>
                                 </a>
                             </li>
+
 {% if request.user|has_group:"Autors" %}
 <li class="nav-item">
       <a href="{% url 'mynews' %}"
@@ -51,6 +52,7 @@
 </li>
 {% endif %}
 
+{% if request.user.id %}
 <li class="nav-item">
       <a href="{% url 'myarticles' %}"
       {% if request.resolver_match.view_name == 'myarticles' %} class="nav-link current" {% else %} class="nav-link" {% endif %}>
@@ -58,6 +60,7 @@
         <div class="d-none d-lg-block">Избранное</div>
     </a>
 </li>
+{% endif %}
  </ul>
      <div class="dropdown" >
           <button class="dropbtn btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
