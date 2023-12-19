@@ -64,7 +64,11 @@
  </ul>
      <div class="dropdown" >
           <button class="dropbtn btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-              <div class="d-none d-lg-block">Пользователь: {{request.user.username}}</div>
+              {% if request.user.id %}
+              <div class="d-none d-lg-block">{{request.user.username}}</div>
+              {% else %}
+              <div class="d-none d-lg-block">Гость</div>
+              {% endif %}
           </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
       {% if request.user.id %}  <!-- проверяем аутентификацию-->
