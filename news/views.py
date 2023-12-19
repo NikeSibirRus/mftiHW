@@ -2,11 +2,23 @@ from django.shortcuts import render, HttpResponse, redirect
 from django.urls import reverse_lazy
 
 from .models import *
+from users.models import *
 from django.db import connection, reset_queries
 from django.views.generic import DetailView, DeleteView, UpdateView
 from django.contrib.auth.decorators import login_required
 from .forms import *
 # Create your views here.
+
+
+
+from django.core.paginator import Paginator
+def pagination(request):
+    articles = Article.objects.all()
+    p = Paginator(articles, 4)
+    page_number = request.GET.get('page')
+    page_obj = p.get_page(page_number)
+    context = {'articles': page_obj}
+    return render(request, 'news/all_news.html', context)
 
 
 import json
@@ -51,6 +63,15 @@ def all_news(request):
                'categories': categories, 'selected_category': selected_category}
 
     return render(request, 'news/all_news.html', context)
+
+
+def myarticles(request):
+    user = request.user
+    print('Я есть',user)
+    articles = Article.objects.filter(favoritearticle__user=user)
+
+    context = {'articles': articles}
+    return render(request, 'news/myarticles.html', context)
 
 def index(request):
    # article = Article.objects.last()

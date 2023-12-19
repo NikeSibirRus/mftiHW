@@ -1,11 +1,12 @@
-from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, HttpResponse, redirect
+from django.shortcuts import render, HttpResponseRedirect, redirect, HttpResponse
+from .models import *
+from .forms import *
+
 from django.contrib import messages
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import Group
 
-from users.models import Account
-from .forms import  *
-from .forms import UserRegisterForm
 
 # Create your views here.
 def contact_page(request):
@@ -22,6 +23,24 @@ def contact_page(request):
     context={'form': form}
     return render(request,'users/contact_page.html',context)
 
+
+
+
+from django.contrib.auth.decorators import login_required
+from news.models import Article
+@login_required
+def add_to_favorites(request, id):
+    article = Article.objects.get(id=id)
+    #проверям есть ли такая закладка с этой новостью
+    bookmark = FavoriteArticle.objects.filter(user=request.user.id,
+                                              article=article)
+    if bookmark.exists():
+        bookmark.delete()
+        messages.warning(request,f"Новость {article.title} удалена из закладок")
+    else:
+        bookmark = FavoriteArticle.objects.create(user=request.user, article=article)
+        messages.success(request,f"Новость {article.title} добавлена в закладки")
+    return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
 
 def index(request):
@@ -66,6 +85,8 @@ def register(request):
         form = UserRegisterForm()
     return render(request, 'users/register.html', {'form': form})
 
+
+from django.contrib.auth.decorators import login_required
 @login_required
 def profile(request):
     return render(request, 'users/profile.html')

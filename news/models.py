@@ -58,6 +58,9 @@ class Article(models.Model):
         else:
             return '(no image)'
 
+    def get_views(self):
+        return self.views.count()
+
     #Методанные
     class Meta:
         ordering = ['title', 'date']

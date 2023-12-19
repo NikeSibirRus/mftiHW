@@ -45,8 +45,16 @@
                                 </a>
                             </li>
 
+<li class="nav-item">
+      <a href="{% url 'myarticles' %}"
+      {% if request.resolver_match.view_name == 'myarticles' %} class="nav-link current" {% else %} class="nav-link" {% endif %}>
+        <i class="fas fa-heart nav-icon"></i>
+        <div class="d-none d-lg-block">Избранное</div>
+    </a>
+</li>
 
-                        </ul>
+
+ </ul>
 
 
      <div class="dropdown" >
