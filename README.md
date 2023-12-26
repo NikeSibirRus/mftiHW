@@ -6,7 +6,11 @@
 Шаблон для меню навигации, который будет интегрироваться в другие шаблоны - left-side.html (https://www.free-css.com/free-css-templates/page277/upright)
 ### Портал новостей
 ### Старт с http://127.0.0.1:8000/news/show/
-Выводится последняя новость latest("id")
+
+Учетки 
+Admin / 20BJCdPj   админ и автор
+Writer_001 / 20BJCdPj читатель
+Writer_002 / T68LmrAr   автор
 
 ДЗ 3 https://demouserrtc.pythonanywhere.com/news/show/
 - [x] Разграничены права доступа
@@ -28,4 +32,5 @@
     - [x] Все работает
     - [x] Пагинация добавлена в избранное/мои новости
     - [x] Публикация на хостинге https://demouserrtc.pythonanywhere.com/news/show/
+    - [ ] Доп. мультиязычность gettext на перспективу
 
